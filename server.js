@@ -8,6 +8,7 @@ const util = require("util")
 const readFile = util.promisify(fs.readFile)
 const writeFile = util.promisify(fs.writeFile)
 
+const PORT = process.env.PORT;
 function getTodos() {
     return readFile("./data.json", "utf-8").then(JSON.parse)
 }
@@ -50,6 +51,6 @@ app.put("/todo/:id", async (req, res) => {
 })
 
 
-app.listen(3001, () => {
-    console.log("server is up and running on http://localhost:3001")
+app.listen(PORT, () => {
+    console.log(`server is up and running on http://localhost:${PORT}`)
 })
