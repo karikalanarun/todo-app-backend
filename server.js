@@ -48,6 +48,8 @@ app.put("/todo/:id", async (req, res) => {
     let index = todos.findIndex(({ id }) => req.params.id)
     await writeTodos(JSON.stringify({ todos: [...todos.slice(0, index), { ...todos[index], ...req.body }, ...todos.slice(index + 1)] }))
     res.sendStatus(200)
+
+
 })
 
 
