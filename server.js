@@ -4,6 +4,7 @@ const app = express()
 const fs = require("fs")
 const { v4: uuid } = require("uuid")
 const util = require("util")
+var cors = require('cors')
 
 const readFile = util.promisify(fs.readFile)
 const writeFile = util.promisify(fs.writeFile)
@@ -18,6 +19,7 @@ function writeTodos(todos) {
 }
 
 app.use(express.json())
+app.use(cors())
 
 app.post("/todo", async (req, res) => {
     const { todos } = await getTodos()
