@@ -40,7 +40,7 @@ app.get("/todos", async (req, res) => {
 
 app.delete("/todo/:id", async (req, res) => {
     const { todos } = await getTodos()
-    let index = todos.findIndex(({ id }) => req.params.id)
+    let index = todos.findIndex(({ id }) => req.params.id === id)
     await writeTodos(JSON.stringify({ todos: [...todos.slice(0, index), ...todos.slice(index + 1)] }))
     res.sendStatus(200)
 })
